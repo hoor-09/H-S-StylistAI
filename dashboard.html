@@ -3,65 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H&S Fashion Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
+<body class="dashboard-page">
     <header>
         <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="H&S Logo">
-            </div>
+            <div class="logo">H&S Fashion</div>
             <ul class="nav-links">
-                <li><a href="dashboard.html">Home</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="#" id="logoutBtn">Log Out</a></li>
+                <li><a href="#wardrobe">My Wardrobe</a></li>
+                <li><a href="#preferences">Preferences</a></li>
+                <li><a href="#outfits">Outfit Suggestions</a></li>
+                <li><button id="logoutBtn" class="btn">Logout</button></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Welcome Section -->
-    <section id="welcome-message" class="content-section">
-        <div class="text-content">
-            <h2>Welcome to H&S StylistAI!</h2>
-            <p>Start by uploading your wardrobe and get AI-powered outfit suggestions.</p>
-            <button id="startCloset" class="btn">Upload Your Wardrobe</button>
-        </div>
-    </section>
-
-    <!-- Virtual Closet Section -->
-    <section id="virtual-closet" class="content-section">
-        <div class="text-content">
-            <h2>Your Virtual Closet</h2>
-            <p>Upload your wardrobe items to get AI-powered outfit suggestions.</p>
+    
+    <main>
+        <section class="welcome-section">
+            <h1>Welcome, <span id="username">User</span>!</h1>
+            <p>Manage your wardrobe, set preferences, and get AI-powered outfit suggestions.</p>
+        </section>
+        
+        <section id="wardrobe" class="dashboard-section">
+            <h2>👗 Upload Your Wardrobe</h2>
             <input type="file" id="imageUpload" accept="image/*">
-            <div id="closet-gallery" class="image-grid"></div>
-            <button id="goToOutfits" class="btn" style="display: none;">See Outfit Suggestions</button>
-        </div>
-    </section>
-
-    <!-- Outfit Recommendations Section -->
-    <section id="outfit-recommendations" class="content-section">
-        <div class="text-content">
-            <h2>Your AI Outfit Recommendations</h2>
-            <p>Here are outfit suggestions based on your style and season.</p>
-
-            <label for="seasonFilter">Select Season:</label>
-            <select id="seasonFilter">
-                <option value="summer">Summer</option>
-                <option value="winter">Winter</option>
-                <option value="spring">Spring</option>
-                <option value="autumn">Autumn</option>
+            <div id="closet-gallery"></div>
+        </section>
+        
+        <section id="preferences" class="dashboard-section">
+            <h2>🎨 Your Style Preferences</h2>
+            <select id="styleSelect">
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="sporty">Sporty</option>
+                <option value="trendy">Trendy</option>
             </select>
-
-            <!-- Loading Spinner -->
-            <div id="loading-spinner" style="display: none;">Loading...</div>
-
-            <div id="outfit-container" class="image-grid"></div>
-        </div>
-    </section>
-
+        </section>
+        
+        <section id="outfits" class="dashboard-section">
+            <h2>✨ Outfit Suggestions</h2>
+            <div id="outfit-container"></div>
+        </section>
+    </main>
+    
     <script src="script.js"></script>
 </body>
 </html>

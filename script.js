@@ -1,6 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Script Loaded"); // Debugging Step
 
+
+    const wrapper = document.querySelector('.wrapper');
+    const signUpLink = document.querySelector('.signUp-link');
+    const signInLink = document.querySelector('.signIn-link');
+    
+    if (signUpLink && signInLink && wrapper) {
+        signUpLink.addEventListener('click', () => {
+            wrapper.classList.add('animate-signIn');
+            wrapper.classList.remove('animate-signUp');
+        });
+
+        signInLink.addEventListener('click', () => {
+            wrapper.classList.add('animate-signUp');
+            wrapper.classList.remove('animate-signIn');
+        });
+    } else {
+        console.warn("⚠️ Sign-up or Sign-in link not found.");
+    }
+
+
     // =================== FAQ Toggle ===================
     const faqItems = document.querySelectorAll(".faq-item");
 
@@ -214,6 +234,91 @@ document.addEventListener("DOMContentLoaded", function () {
         goToOutfitsBtn.addEventListener("click", function () {
             virtualCloset.style.display = "none";
             outfitRecommendations.style.display = "block";
+        });
+    }
+
+    // =================== Log Out Function ===================
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+            localStorage.clear();
+            window.location.href = "index.html";
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ Script Loaded Successfully");
+
+    // =================== Wardrobe Upload Functionality ===================
+    const imageUpload = document.getElementById("imageUpload");
+    const closetGallery = document.getElementById("closet-gallery");
+
+    // Load saved images from localStorage on page load
+    let storedImages = JSON.parse(localStorage.getItem("wardrobe")) || [];
+
+    function displayWardrobe() {
+        closetGallery.innerHTML = ""; // Clear previous images
+
+        storedImages.forEach((imageSrc, index) => {
+            const imageContainer = document.createElement("div");
+            imageContainer.classList.add("closet-item");
+
+            const imgElement = document.createElement("img");
+            imgElement.src = imageSrc;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "X";
+            deleteBtn.classList.add("delete-btn");
+
+            deleteBtn.onclick = function () {
+                storedImages.splice(index, 1); // Remove from array
+                localStorage.setItem("wardrobe", JSON.stringify(storedImages)); // Update storage
+                displayWardrobe(); // Refresh display
+            };
+
+            imageContainer.appendChild(imgElement);
+            imageContainer.appendChild(deleteBtn);
+            closetGallery.appendChild(imageContainer);
+        });
+    }
+
+    // Display wardrobe on page load
+    displayWardrobe();
+
+    // Handle new image uploads
+    if (imageUpload) {
+        imageUpload.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    storedImages.push(e.target.result);
+                    localStorage.setItem("wardrobe", JSON.stringify(storedImages));
+                    displayWardrobe();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // =================== Preferences Selection ===================
+    const stylePreference = document.getElementById("stylePreference");
+    const saveProfile = document.getElementById("saveProfile");
+
+    // Load saved preferences from localStorage
+    const savedStyle = localStorage.getItem("userStyle");
+    if (savedStyle) {
+        stylePreference.value = savedStyle;
+    }
+
+    if (saveProfile) {
+        saveProfile.addEventListener("click", function () {
+            const selectedStyle = stylePreference.value;
+            localStorage.setItem("userStyle", selectedStyle);
+            alert("Preferences Saved!");
         });
     }
 
