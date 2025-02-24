@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Style</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <h1>Choose Your Style</h1>
+        <p>Select your gender to see personalized outfit recommendations</p>
+    </header>
+
+    <div class="gender-container">
+        <button class="gender-btn" data-gender="male">
+            <img src="images/men-symbol.png" alt="Men Symbol">
+            Men
+        </button>
+        <button class="gender-btn" data-gender="female">
+            <img src="images/women-symbol.png" alt="Women Symbol">
+            Women
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const genderButtons = document.querySelectorAll(".gender-btn");
+
+            genderButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const selectedGender = this.getAttribute("data-gender");
+                    localStorage.setItem("selectedGender", selectedGender); // Store gender in localStorage
+                    window.location.href = "profile.html"; // Redirect to Profile Page
+                });
+            });
+        });
+    </script>
+</body>
+</html>

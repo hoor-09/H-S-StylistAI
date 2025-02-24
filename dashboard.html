@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&S Fashion Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="H&S Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="#" id="logoutBtn">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Section -->
+    <section id="welcome-message" class="content-section">
+        <div class="text-content">
+            <h2>Welcome to H&S StylistAI!</h2>
+            <p>Start by uploading your wardrobe and get AI-powered outfit suggestions.</p>
+            <button id="startCloset" class="btn">Upload Your Wardrobe</button>
+        </div>
+    </section>
+
+    <!-- Virtual Closet Section -->
+    <section id="virtual-closet" class="content-section">
+        <div class="text-content">
+            <h2>Your Virtual Closet</h2>
+            <p>Upload your wardrobe items to get AI-powered outfit suggestions.</p>
+            <input type="file" id="imageUpload" accept="image/*">
+            <div id="closet-gallery" class="image-grid"></div>
+            <button id="goToOutfits" class="btn" style="display: none;">See Outfit Suggestions</button>
+        </div>
+    </section>
+
+    <!-- Outfit Recommendations Section -->
+    <section id="outfit-recommendations" class="content-section">
+        <div class="text-content">
+            <h2>Your AI Outfit Recommendations</h2>
+            <p>Here are outfit suggestions based on your style and season.</p>
+
+            <label for="seasonFilter">Select Season:</label>
+            <select id="seasonFilter">
+                <option value="summer">Summer</option>
+                <option value="winter">Winter</option>
+                <option value="spring">Spring</option>
+                <option value="autumn">Autumn</option>
+            </select>
+
+            <!-- Loading Spinner -->
+            <div id="loading-spinner" style="display: none;">Loading...</div>
+
+            <div id="outfit-container" class="image-grid"></div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
