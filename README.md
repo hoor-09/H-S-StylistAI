@@ -1,2 +1,2 @@
-# H-S-StylistAI
+# H&S StylistAI
 Website
