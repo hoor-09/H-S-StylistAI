@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: row; /* Keep sidebar & content in a row */
+    min-height: 100vh;
+    background: #f2f5f4;
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background: #26a09c;
+    padding-top: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 80px; /* Below navbar */
+    left: 0;
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 25px 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover {
+    background: #1f7572;
+    padding-left: 20px; /* Slight slide effect */
+}
+.sidebar ul li a.active {
+    background: #1f7572;
+    border-radius: 5px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #3b807d; /* Slightly lighter */
+    padding-left: 25px; /* Moves text slightly */
+}
+
+/* Active State */
+.sidebar a.active {
+    background: #447c7a; /* Highlight color */
+    font-weight: bold;
+    padding-left: 25px;
+    border-left: 5px solid white;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar a {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px; /* Matches sidebar width */
+    margin-top: 80px; /* Ensure it's right below navbar */
+    width: calc(100% - 250px); /* Take remaining space */
+    height: calc(100vh - 80px); /* Fill screen, minus navbar */
+    overflow-y: auto; /* Add scroll if content overflows */
+    padding: 20px;
+    background: white; /* Background consistency */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main-content h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    font-size: 18px;
+    color: #555;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 100px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+    }
+
+    .main-content {
+        margin-left: 100px;
+        width: calc(100% - 100px);
+    }
+}
+
+/* Main content area */
+.content {
+    flex: 1;
+    padding: 40px;
+    margin-left: 250px; /* Adjust to match sidebar width */
+}
+
+/* Dashboard sections */
+.dashboard-section {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    align-self: flex-start; /* Ensures section sticks to the top */
+}
+
+.dashboard-container {
+    display: flex;
+    position: absolute;
+    top: 80px; /* Push it exactly below the navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px); /* Fill the remaining height */
+}
+
+
+/* Show active section */
+.dashboard-section.active {
+    display: block;
+}
+
+/* Section headings */
+.dashboard-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Section content text */
+.dashboard-section p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Closet Gallery */
+.closet-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.closet-gallery img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+}
+
+.closet-gallery img:hover {
+    transform: scale(1.1);
+}
+
+.closet-item {
+    position: relative;
+    display: inline-block;
+}
+
+/* Styling for uploaded images */
+.closet-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+}
+
+.closet-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ✅ FIX: Position delete button properly */
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 16px; /* Increased font size for better visibility */
+    font-weight: bold; /* Make the "X" bold */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-family: Arial, sans-serif; /* Ensure a clean "X" */
+}
+
+.delete-btn:hover {
+    background: darkred;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #fff; /* White for a cleaner look */
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filters label {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+}
+
+.filters select {
+    background: #fff;
+    color: #333;
+    border: 2px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filters select:hover {
+    border-color: #26a09c;
+}
+
+.filters select:focus {
+    outline: none;
+    border-color: #26a09c;
+    box-shadow: 0 0 4px rgba(38, 160, 156, 0.5);
+}
+
+/* Gender Selection with Images */
+.gender-selection {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.gender-selection label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.gender-option {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    padding: 5px;
+}
+
+/* Highlight selected gender */
+.gender-selection input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+.gender-selection input[type="radio"]:checked + .gender-option {
+    border-color: #26a09c; /* Highlight the selected gender */
+    box-shadow: 0 0 10px rgba(38, 160, 156, 0.6);
+    transform: scale(1.1);
+    background-color: rgba(38, 160, 156, 0.2); /* Light background tint */
+}
+
+#match-outfit {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Match Outfit Source Dropdown (Styled like others) */
+#matchSource {
+    background: #fff;
+    color: #333;
+    border: 2px solid #ccc;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    max-width: 250px; /* Keeps it same width as other dropdowns */
+}
+
+#matchSource:hover {
+    border-color: #26a09c; /* Match theme */
+}
+
+#matchSource:focus {
+    outline: none;
+    border-color: #26a09c;
+    box-shadow: 0 0 4px rgba(38, 160, 156, 0.5);
+}
+
+
+#findMatchesBtn {
+    background: #26a09c; /* Your theme color */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin-top: 15px;
+}
+
+#findMatchesBtn:hover {
+    background: #1f7572; /* Darker shade */
+    transform: scale(1.05);
+}
+
+/* Loading Animation */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 5px solid #ccc;
+    border-top-color: #26a09c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Preferences Section */
+#preferences {
+    background: linear-gradient(to right, #f7f7f7, #eeeeee); /* Subtle gradient */
+    color: #222; 
+    padding: 40px; /* More padding for breathing space */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: none;
+    margin: 20px auto;
+    transition: 0.3s ease-in-out;
+}
+
+/* Preferences Section Headings */
+#preferences h2 {
+    color: #26a09c; 
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Preference Selection Groups */
+.preference-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+/* Labels */
+.preference-group label {
+    font-size: 17px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Dropdowns & Inputs */
+#preferences select,
+#preferences input[type="checkbox"] {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+#preferences select:hover,
+#preferences input[type="checkbox"]:hover {
+    border-color: #26a09c;
+}
+
+/* Gender Selection */
+.gender-selection {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.gender-selection label {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.gender-option {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    padding: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.gender-selection input[type="radio"]:checked + .gender-option {
+    border-color: #26a09c;
+    box-shadow: 0 0 15px rgba(38, 160, 156, 0.6);
+    transform: scale(1.1);
+    background: rgba(38, 160, 156, 0.15);
+}
+
+/* Color Selection - Keep Existing Style */
+.color-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+/* Hide Default Checkboxes */
+.color-selection input[type="checkbox"] {
+    display: none;
+}
+
+/* Style Labels as Clickable Boxes */
+.color-selection label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    font-size: 16px;
+    min-width: 80px; /* Keeps consistent size */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Hover Effect - Change Background to Respective Color */
+#black:hover + label { background: black; color: white; }
+#white:hover + label { background: white; color: black; border: 1px solid #ccc; }
+#red:hover + label { background: red; color: white; }
+#blue:hover + label { background: rgb(0, 162, 255); color: white; }
+#green:hover + label { background: green; color: white; }
+
+/* Checked Effect - Change Background to Selected Color */
+#black:checked + label { background: black; color: white; }
+#white:checked + label { background: white; color: black; border: 1px solid #ccc; }
+#red:checked + label { background: red; color: white; }
+#blue:checked + label { background: rgb(0, 162, 255); color: white; }
+#green:checked + label { background: green; color: white; }
+
+
+
+/* Save Preferences Button */
+#savePreferencesBtn {
+    background: #26a09c;
+    color: white;
+    font-size: 18px;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin: 30px auto;
+}
+
+#savePreferencesBtn:hover {
+    background: #1f7572;
+    transform: scale(1.1);
+    box-shadow: 0 5px 10px rgba(31, 117, 114, 0.3);
+}
+
+/* General Label Styling */
+#preferences label {
+    font-size: 18px; /* Slightly larger text */
+    font-weight: bold; /* Makes it stand out */
+    color: #1f7572; /* Theme color */
+    text-transform: capitalize; /* Keeps a clean look */
+    margin-bottom: 5px;
+    display: block; /* Ensures proper spacing */
+}
+
+/* Highlighting Specific Sections */
+#preferences h2 {
+    color: #1f7572;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Adds a subtle modern look */
+}
+
+
+#recommendations {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.outfit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Adjust width to fit content */
+    margin: 0 auto; /* Centers the grid */
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 20px; /* Adds spacing between images */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Adjust width for balance */
+    margin: 0 auto; /* Centers the grid */
+    background: none !important; /* Removes any forced background */
+}
+
+
+.outfit {
+    width: 100%;  /* Makes sure images scale correctly */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 300px; /* Prevents overly tall images */
+    object-fit: cover; /* Ensures the whole image is visible */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: none !important; /* Ensures no background */
+}
+
+.outfit:hover {
+    transform: scale(1.05);
+}
+
+#refreshRecommendations {
+    background: #26a09c;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+#refreshRecommendations:hover {
+    background: #1f7572;
+}
+
+
+/* Loader (hidden by default) */
+#loading {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1f7572;
+    margin-top: 15px;
+    animation: fadeInOut 1.5s linear infinite;
+}
+
+/* Fade in-out animation */
+@keyframes fadeInOut {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+
+#settings {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.account-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    background: #26a09c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1f7572;
+}
+
+.danger {
+    background: #e74c3c; /* Red for danger actions */
+}
+
+.danger:hover {
+    background: #c0392b;
+}
+
+.settings {
+    margin-top: 20px;
+}

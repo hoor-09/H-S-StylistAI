@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Smart Shopping Assistant</title>
+    <link rel="stylesheet" href="/CSS/global.css">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="images/logo.jpeg" alt="H&S Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">AI Recommendations</a></li>
+            <li><a href="#">Match the Outfit</a></li>
+            <li><a href="#">Account & Settings</a></li>
+            <li><button class="btn logout" id="logoutBtn">Logout</button></li>
+        </ul>
+    </nav>
+    
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#" data-section="closet" class="active">Virtual Closet</a></li>
+                <li><a href="#" data-section="preferences">Edit Preferences</a></li>
+                <li><a href="#" data-section="recommendations">AI Recommendations</a></li>
+                <li><a href="#" data-section="match-outfit">Match the Outfit</a></li>
+                <li><a href="#" data-section="settings">Account & Settings</a></li>
+            </ul>
+        </aside>
+       
+        <!-- Main Content -->
+        <main class="content">
+            <section id="closet" class="dashboard-section active">
+                <h2>Virtual Closet</h2>
+                <p>Upload your outfits and manage your wardrobe.</p>
+                
+                <!-- Upload Input -->
+                <input type="file" id="uploadInput" accept="image/*">
+                
+                <!-- Uploaded Images Display -->
+                <div class="closet-gallery" id="closetGallery"></div>
+
+
+
+                <div class="closet-actions">
+                    <button class="btn" onclick="window.location.href='dashboard.html?section=match-outfit'">Match Outfits</button>
+                    <button class="btn" onclick="window.location.href='dashboard.html?section=recommendations'">AI Recommendations</button>
+                </div>
+                
+            </section>
+
+            <section id="preferences" class="dashboard-section">
+                <h2>Preferences</h2>
+                <p>Modify your favorite styles, colors, and occasions.</p>
+            
+                <!-- Gender Selection -->
+                <label for="gender">Gender:</label>
+                <div class="gender-selection">
+                    <label>
+                        <input type="radio" name="gender" value="male" id="male">
+                        <img src="images/men-symbol.png" alt="Male" class="gender-option">
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" id="female">
+                        <img src="images/women-symbol.png" alt="Female" class="gender-option">
+                    </label>
+                </div>
+            
+                <!-- Clothing Type Preferences -->
+                <label for="clothingType">Favorite Clothing Type:</label>
+                <select id="clothingType">
+                    <option value="casual">Casual</option>
+                    <option value="formal">Formal</option>
+                    <option value="party">Party Wear</option>
+                    <option value="nightwear">Nightwear</option>
+                </select>
+                <br/>
+                <br/>
+            
+                <!-- Color Preferences -->
+                <label><b>Favorite Colors:</b></label>
+                <div class="color-selection">
+                    <input type="checkbox" id="black" value="black"><label for="black">Black</label>
+                    <input type="checkbox" id="white" value="white"><label for="white">White</label>
+                    <input type="checkbox" id="red" value="red"><label for="red">Red</label>
+                    <input type="checkbox" id="blue" value="blue"><label for="blue">Blue</label>
+                    <input type="checkbox" id="green" value="green"><label for="green">Green</label>
+                </div>
+                <br/>
+            
+                <!-- Season Preferences -->
+                <label for="favoriteSeason">Favorite Season:</label>
+                <select id="favoriteSeason">
+                    <option value="summer">Summer</option>
+                    <option value="winter">Winter</option>
+                    <option value="autumn">Autumn</option>
+                    <option value="spring">Spring</option>
+                </select>
+                <br/>
+                <br/>
+                <!-- Occasion Preferences -->
+                <label for="favoriteOccasion">Favorite Occasion:</label>
+                <select id="favoriteOccasion">
+                    <option value="work">Work</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="date">Date Night</option>
+                    <option value="casual-outing">Casual Outing</option>
+                </select>
+            
+                <!-- Save Preferences Button -->
+                <button id="savePreferencesBtn" class="btn">Save Preferences</button>
+            </section>
+            
+            
+
+            <section id="recommendations" class="dashboard-section">
+                <h2>AI Recommendations</h2>
+                <p>Get outfit suggestions based on your style.</p>
+
+                <div class="outfit-grid">
+                    <img src="images/outfit1.jpg" class="outfit" alt="Recommended Outfit 1">
+                    <img src="images/outfit2.jpg" class="outfit" alt="Recommended Outfit 2">
+                    <img src="images/outfit3.jpg" class="outfit" alt="Recommended Outfit 3">
+                </div>
+            
+                <button id="refreshRecommendations">Get New Recommendations</button>
+                <p id="loading">Finding the best outfits for you... ⏳</p>
+            </section>
+
+            <!-- Match the Outfit Section (Updated) -->
+            <section id="match-outfit" class="dashboard-section">
+                <h2>Match Your Outfit</h2>
+                
+                <!-- Dropdown to Select Matching Source -->
+                <label for="matchSource">Where do you want to find matches?</label>
+                <select id="matchSource">
+                    <option value="myCloset">My Closet</option>
+                    <option value="onlineStores">Online & Offline Stores</option>
+                </select>
+
+                <!-- Filters for Users Without Uploaded Outfits -->
+                <div class="filters" id="filtersContainer">
+                    <label for="type">Type:</label>
+                    <select id="formality"> <!-- Matches JavaScript -->
+                        <option value="casual">Casual</option>
+                        <option value="formal">Formal</option>
+                        <option value="party">Party Wear</option>
+                        <option value="nightwear">Nightwear</option>
+                    </select>
+
+                    <label for="season">Season:</label>
+                    <select id="season">
+                        <option value="summer">Summer</option>
+                        <option value="winter">Winter</option>
+                        <option value="autumn">Autumn</option> 
+                        <option value="spring">Spring</option>
+                    </select>
+
+                    <label for="occasion">Occasion:</label>
+                    <select id="occasion">
+                        <option value="work">Work</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="date">Date Night</option>
+                        <option value="casual-outing">Casual Outing</option>
+                    </select>
+                </div>
+
+                <button id="findMatchesBtn">Find Matches</button>
+
+                <!-- Results Display -->
+                <div id="matchResults" class="closet-gallery">
+                    <div id="loadingIndicator" class="loading-spinner" style="display: none;"></div>
+
+                    <!-- Matched outfits will be displayed here dynamically -->
+                </div>
+            </section>
+
+            <section id="settings" class="dashboard-section">
+                <h2>Account & Settings</h2>
+
+                <div class="account-info">
+                    <p><strong>Username:</strong> <span id="username">User123</span></p>
+                    <button id="editPreferences">Edit Preferences</button>
+                    <button id="changePassword">Change Password</button>
+                    <button id="deleteAccount" class="danger">Delete Account</button>
+                </div>
+
+                <div class="settings">
+                    <h3>Appearance</h3>
+                    <button id="darkModeToggle">Enable Dark Mode</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/JavaScript/dashboard.js"></script>
+    <script src="/JavaScript/global.js"></script>
+</body>
+</html>

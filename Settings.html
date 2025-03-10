@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - H&S Fashion</title>
+    <link rel="stylesheet" href="CSS/settings.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="H&S Logo">
+
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="settings.html">Account & Settings</a></li>
+                <li><a href="#" id="logoutBtn">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="profile" class="content-section">
+        <div class="text-content">
+            <h2>Your Profile</h2>
+            <p>Update your preferences and manage your account.</p>
+
+            <label for="stylePreference">Preferred Style:</label>
+            <select id="stylePreference">
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="sporty">Sporty</option>
+            </select>
+
+            <button id="saveProfile" class="btn">Save Preferences</button>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("saveProfile").addEventListener("click", function () {
+    const style = document.getElementById("stylePreference").value;
+    localStorage.setItem("userStyle", style);
+    alert("Preferences Saved!"); 
+    window.location.href = "dashboard.html"; // Redirect to dashboard after saving
+});
+
+    </script>
+    <script src="/JavaScript/settings.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoutBtn = document.getElementById("logoutBtn");
+    
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", function () {
+                    localStorage.clear(); // Clear user data
+                    window.location.href = "index.html"; // Redirect to homepage
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

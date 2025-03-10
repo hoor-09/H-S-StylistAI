@@ -1,0 +1,220 @@
+/* 🌟 Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 🌟 Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* 🌟 Global Theme */
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #e2e2e2, #26a09c);
+    text-align: center;
+}
+
+/* 🌟 Navbar */
+nav {
+    background: #050000; /* Simple white background */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 93px;  /* Set a fixed height */
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000000;
+    gap: 10px;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.nav-links a {
+    display: inline-block;
+    padding: 10px;
+    color: #faf6f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* 🚀 Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: #26a09c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #2a8ba3, #385857);
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.signup-link {
+    display: inline-block;
+    padding: 12px 30px; /* Button padding */
+    background: #26a09c; /* Button background color */
+    color: white; /* Text color */
+    text-decoration: none;
+    font-size: 18px; /* Adjust font size */
+    font-weight: normal; /* Remove bold */
+    border-radius: 8px; /* Rounded corners */
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow */
+}
+
+.signup-link:hover {
+    background: #218684; /* Darker green on hover */
+    text-decoration: none !important; /* Ensure no underline on hover */
+}
+
+
+/* 📱 Responsive Navbar */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center; /* Ensure items are centered */
+        justify-content: center; /* Make sure they align */
+        width: 100%; /* Ensure it spans full width */
+        padding-top: 10px;
+    }
+
+    .nav-links a {
+        width: 80%; /* Make links wider for better tap experience */
+        text-align: center;
+    }
+}
+
+/* Apply styles only for non-signup pages */
+body:not(.signup-page) .container {
+    position: relative;
+    width: 850px;
+    background: #f2f5f4;
+    margin: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Ensure signup page container still works */
+body.signup-page .container {
+    width: 850px;
+    height: 550px;
+    background: #f2f5f4;
+    margin: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+}
+
+
+.container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.container p {
+    font-size: 14.5px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* 🌟 Footer */
+footer {
+    margin-top: 50px;
+    background-color: #030403;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: #555;
+}
+
+footer a {
+    color: #26a09c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+}

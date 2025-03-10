@@ -1,0 +1,29 @@
+.gender-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 100vh;
+}
+
+.gender-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.gender-btn img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.gender-btn:hover img {
+    transform: scale(1.05);
+}
