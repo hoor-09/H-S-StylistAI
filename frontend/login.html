@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/S-H-StylistAI/frontend/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/S-H-StylistAI/src/output.css">
+
+    <style>
+        :root {
+            --primary: #7C2E3D;
+            --secondary: #fdf5f7;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdf5f7 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+        
+        /* Floating animation for fashion items */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element.delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .floating-element.delay-2 {
+            animation-delay: 2s;
+        }
+        
+        /* Glow effect for form */
+        .form-glow {
+            box-shadow: 0 0 30px rgba(124, 46, 61, 0.1);
+        }
+        
+        /* Background pattern */
+        .bg-pattern {
+            background-image: radial-gradient(circle, rgba(124, 46, 61, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .icon-style {
+          font-size: 2.5rem;
+          color: #7C2E3D;
+          margin-bottom: 0.5rem;
+        }
+    
+        .nav-link {
+          position: relative;
+        }
+        .nav-link:after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -2px;
+          left: 0;
+          background-color: var(--primary);
+          transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+          width: 100%;
+        }
+        .btn-primary {
+          background: var(--primary);
+          transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+          background: rgb(85, 33, 33);
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(124, 46, 61, 0.3);
+        }
+        .btn-secondary {
+          background: white;
+          color: var(--primary);
+          border: 1px solid var(--primary);
+          transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+          background: rgb(85, 33, 33);
+          color: white;
+          transform: translateY(-2px);
+        }
+      </style>
+</head>
+  <body class="min-h-screen flex flex-col bg-gradient-to-b from-[#fdf5f7] to-[#ffffff]">
+
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-[#7C2E3D] z-50 shadow-sm py-4 px-6 transition-all duration-300" id="navbar">
+    <div class="px-6 flex items-center justify-between">
+        <a href="login.html" class="flex items-center space-x-2">
+            <img src="/S-H-StylistAI/frontend/assets/images/logo.png" alt="H&S Logo" class="h-500 w-12 object-contain">
+            <h1 class="text-2xl font-bold text-white">H&S StylistAI</h1>
+          </a>
+  
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Home</a>
+        <a href="how-it-works.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">How It Works</a>
+        <a href="features.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Features</a>
+        <a href="pricing.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Pricing</a>
+        <a href="about.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">About</a>
+        <a href="partners.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Partners</a>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="login.html" class="btn-secondary px-4 py-2 rounded-lg text-sm font-medium">Sign In</a>
+        <a href="app.html" class="btn-primary px-4 py-2 rounded-lg text-sm font-medium text-white">Try Now</a>
+      </div>
+      
+      <button id="menu-toggle" class="md:hidden text-[#ffffff] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden mt-4 py-4 border-t border-white transition-all duration-300 bg-[#7C2E3D]">
+        <div class="flex flex-col space-y-4">
+          <a href="index.html" class="text-white hover:text-[#a4a4a4] transition">Home</a>
+          <a href="how-it-works.html" class="text-white hover:text-[#a4a4a4] transition">How It Works</a>
+          <a href="features.html" class="text-white hover:text-[#a4a4a4] transition">Features</a>
+          <a href="pricing.html" class="text-white hover:text-[#a4a4a4] transition">Pricing</a>
+          <a href="about.html" class="text-white hover:text-[#a4a4a4] transition">About</a>
+          <a href="partners.html" class="text-white hover:text-[#a4a4a4] transition">Partners</a>
+
+          <!-- Buttons -->
+          <div class="pt-4 space-y-2">
+            <a href="login.html" class="block btn-secondary px-4 py-2 rounded-lg text-sm font-medium text-[#7C2E3D] border-white text-center hover:bg-white hover:text-[#4b4b4b] transition">Sign In</a>
+            <a href="app.html" class="block btn-primary px-4 py-2 rounded-lg text-sm font-medium text-white text-center transition">Try Now</a>
+          </div>
+        </div>
+      </div>
+  </nav>
+
+<!-- Mobile Toggle Script -->
+<script>
+  const toggleBtn = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+    <!-- Decorative floating fashion elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <img src="https://cdn-icons-png.flaticon.com/512/3058/3058995.png" class="absolute w-24 opacity-10 left-10 top-1/4 floating-element">
+        <img src="https://cdn-icons-png.flaticon.com/512/3058/3058964.png" class="absolute w-20 opacity-10 right-20 top-1/3 floating-element delay-1">
+        <img src="https://cdn-icons-png.flaticon.com/512/3058/3058976.png" class="absolute w-16 opacity-10 left-1/4 bottom-1/4 floating-element delay-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/3058/3058984.png" class="absolute w-28 opacity-10 right-1/4 bottom-1/3 floating-element">
+    </div>
+
+    <main class="flex-grow pt-24 flex items-center justify-center px-4">
+        <div class="container max-w-4xl w-full">
+            <div class="form-box login">
+                <form action="#">
+                    <h1>Login</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" required>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" required>
+                        <i class='bx bxs-lock-alt' ></i>
+                    </div>
+                    <div class="forgot-link">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p>or login with social platforms</p>
+                    <div class="social-icons">
+                        <a href="#"><i class='bx bxl-google' ></i></a>
+                        <a href="#"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#"><i class='bx bxl-github' ></i></a>
+                        <a href="#"><i class='bx bxl-linkedin' ></i></a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <form action="dashboard.html" method="GET">
+                    <h1>Registration</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" required>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" placeholder="Email" required>
+                        <i class='bx bxs-envelope' ></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" required>
+                        <i class='bx bxs-lock-alt' ></i>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <p>or register with social platforms</p>
+                    <div class="social-icons">
+                        <a href="#"><i class='bx bxl-google' ></i></a>
+                        <a href="#"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#"><i class='bx bxl-github' ></i></a>
+                        <a href="#"><i class='bx bxl-linkedin' ></i></a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="toggle-box">
+                <div class="toggle-panel toggle-left">
+                    <h1>Hello, Welcome!</h1>
+                    <p>Don't have an account?</p>
+                    <button class="btn register-btn">Register</button>
+                </div>
+
+                <div class="toggle-panel toggle-right">
+                    <h1>Welcome Back!</h1>
+                    <p>Already have an account?</p>
+                    <button class="btn login-btn">Login</button>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer class="bg-[#2D2D2D] text-white py-6 text-center">
+            &copy; 2025 H&S StylistAI. All rights reserved.
+          </footer>                 
+          
+          <!-- Bootstrap Icons CDN (optional, only if used) -->
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+          
+          <script> 
+                const container = document.querySelector('.container');
+                const registerBtn = document.querySelector('.register-btn');
+                const loginBtn = document.querySelector('.login-btn');
+
+                registerBtn.addEventListener('click', () => {
+                    container.classList.add('active');
+                })
+
+                loginBtn.addEventListener('click', () => {
+                    container.classList.remove('active');
+                })
+          </script>
+          
+  </body>
+</html>

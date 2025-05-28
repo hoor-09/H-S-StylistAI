@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Recommender | H&S StylistAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="recommender.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="bg-[#F8F5F0] text-gray-800 font-[Poppins]">
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-[#7C2E3D] shadow-md flex flex-col px-4 py-6 space-y-6">
+      <h2 class="text-2xl font-bold text-[#ffffff] mb-8">H&S StylistAI</h2>
+      <nav class="flex flex-col space-y-4 text-[#ffffff] font-medium">
+        <a href="/S-H-StylistAI/frontend/dashboard.html" class="hover:text-[#dadada]"><i class="fas fa-home mr-2"></i> Dashboard</a>
+        <a href="/S-H-StylistAI/frontend/closet.html" class="hover:text-[#dadada]"><i class="fas fa-tshirt mr-2"></i> Virtual Closet</a>
+        <a href="/S-H-StylistAI/frontend/recommender.html" class="hover:text-[#dadada]"><i class="fas fa-magic mr-2"></i> Outfit Recommender</a>
+        <a href="/S-H-StylistAI/frontend/saved.html" class="hover:text-[#dadada]"><i class="fas fa-heart mr-2"></i> Saved Looks</a>
+        <a href="/S-H-StylistAI/frontend/profile.html" class="hover:text-[#dadada]"><i class="fas fa-user mr-2"></i> Style Profile</a>
+        <a href="/S-H-StylistAI/frontend/shop.html" class="hover:text-[#dadada]"><i class="fas fa-store mr-2"></i> Shop</a>
+        <a href="/S-H-StylistAI/frontend/settings.html" class="hover:text-[#dadada]"><i class="fas fa-cog mr-2"></i> Settings</a>
+        <a href="/S-H-StylistAI/frontend/index.html" class="inline-flex items-center px-4 py-2 bg-white text-red-600 border border-red-600 rounded-lg hover:bg-[#d6d5d5] transition">
+          <i class="fas fa-sign-out-alt mr-2"></i> Logout
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <!-- Top Bar -->
+      <header class="flex justify-between items-center mb-6">
+        <h1 class="text-xl font-semibold">AI Outfit Recommender</h1>
+        <div class="flex items-center gap-4">
+          <select class="bg-white border rounded px-2 py-1">
+            <option>EN</option>
+            <option>AR</option>
+          </select>
+          <i class="fas fa-bell text-xl"></i>
+          <img src="https://via.placeholder.com/30" alt="Profile" class="w-8 h-8 rounded-full">
+        </div>
+      </header>
+
+      <!-- Filters -->
+      <section class="bg-white p-4 rounded-xl shadow mb-6">
+        <h2 class="text-md font-semibold mb-3 text-[#7C2E3D]">Select Preferences</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <select class="border px-3 py-2 rounded">
+            <option value="">Occasion</option>
+            <option value="casual">Casual</option>
+            <option value="formal">Formal</option>
+            <option value="work">Work</option>
+          </select>
+          <select class="border px-3 py-2 rounded">
+            <option value="">Weather</option>
+            <option value="summer">Summer</option>
+            <option value="winter">Winter</option>
+            <option value="Autumn">Autumn</option>
+          </select>
+          <select class="border px-3 py-2 rounded">
+            <option value="">Color</option>
+            <option>Neutrals</option>
+            <option>Bold</option>
+            <option>Soft Pastels</option>
+          </select>
+        </div>
+
+        <div class="mt-6 text-center">
+          <button id="generateBtn" class="bg-[#7C2E3D] text-white px-6 py-2 rounded-full hover:bg-[#5f1f2e] transition">
+            Generate Outfit
+          </button>
+        </div>
+      </section>
+
+      <!-- AI Suggestion -->
+      <section class="bg-white p-6 rounded-xl shadow">
+        <h2 class="text-lg font-semibold mb-4 text-[#2D2D2D]">Your AI-Generated Look</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="outfitGrid">
+          <!-- Placeholder items will load here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("generateBtn").addEventListener("click", () => {
+  const grid = document.getElementById("outfitGrid");
+  grid.innerHTML = "";
+
+  const items = [
+    "Top", "Bottom", "Shoes", "Accessories"
+  ];
+
+  items.forEach(item => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <div class="bg-gray-100 p-2 rounded shadow text-center">
+        <img src="https://via.placeholder.com/100" class="rounded mx-auto mb-2" />
+        <p class="text-sm text-gray-600">${item}</p>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+});
+  </script>
+</body>
+</html>

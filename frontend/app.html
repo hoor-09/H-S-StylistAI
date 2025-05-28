@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get the App – H&S StylistAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .icon-style {
+      font-size: 2.5rem;
+      color: #7C2E3D;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    .btn-primary {
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: rgb(85, 33, 33);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(124, 46, 61, 0.3);
+    }
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: rgb(85, 33, 33);
+      color: white;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white">
+
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-[#7C2E3D] z-50 shadow-sm py-4 px-6 transition-all duration-300" id="navbar">
+    <div class="px-6 flex items-center justify-between">
+      <a href="app.html" class="flex items-center space-x-2">
+        <img src="/S-H-StylistAI/frontend/assets/images/logo.png" alt="H&S Logo" class="h-500 w-12 object-contain">
+        <h1 class="text-2xl font-bold text-white">H&S StylistAI</h1>
+      </a>
+  
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Home</a>
+        <a href="how-it-works.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">How It Works</a>
+        <a href="features.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Features</a>
+        <a href="pricing.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Pricing</a>
+        <a href="about.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">About</a>
+        <a href="partners.html" class="relative text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">Partners</a>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="login.html" class="btn-secondary px-4 py-2 rounded-lg text-sm font-medium">Sign In</a>
+        <a href="app.html" class="btn-primary px-4 py-2 rounded-lg text-sm font-medium text-white">Try Now</a>
+      </div>
+      
+      <button id="menu-toggle" class="md:hidden text-[#ffffff] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden mt-4 py-4 border-t border-white transition-all duration-300 bg-[#7C2E3D]">
+        <div class="flex flex-col space-y-4">
+          <a href="index.html" class="text-white hover:text-[#a4a4a4] transition">Home</a>
+          <a href="how-it-works.html" class="text-white hover:text-[#a4a4a4] transition">How It Works</a>
+          <a href="features.html" class="text-white hover:text-[#a4a4a4] transition">Features</a>
+          <a href="pricing.html" class="text-white hover:text-[#a4a4a4] transition">Pricing</a>
+          <a href="about.html" class="text-white hover:text-[#a4a4a4] transition">About</a>
+          <a href="partners.html" class="text-white hover:text-[#a4a4a4] transition">Partners</a>
+
+          <!-- Buttons -->
+          <div class="pt-4 space-y-2">
+            <a href="login.html" class="block btn-secondary px-4 py-2 rounded-lg text-sm font-medium text-[#7C2E3D] border-white text-center hover:bg-white hover:text-[#4b4b4b] transition">Sign In</a>
+            <a href="app.html" class="block btn-primary px-4 py-2 rounded-lg text-sm font-medium text-white text-center transition">Try Now</a>
+          </div>
+        </div>
+      </div>
+  </nav>
+
+<!-- Mobile Toggle Script -->
+<script>
+  const toggleBtn = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+  <main class="flex-grow pt-32">
+    <!-- App CTA Section -->
+    <section class="py-22 px-4 bg-[#ffffff]">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-semibold text-[#2D2D2D]">Get the App</h3>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-2">
+          Experience personalized fashion recommendations on the go. Sign up for early access to the H&S StylistAI mobile app.
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+        <!-- Email Signup Form -->
+        <div class="bg-[#ffffff] p-6 rounded-2xl shadow">
+          <h4 class="text-lg font-bold text-[#7C2E3D] mb-4">Sign Up for Early Access</h4>
+          <form>
+            <input type="email" placeholder="Enter your email" class="w-full mb-4 px-4 py-2 border rounded-lg" required />
+            <button type="submit" class="w-full bg-[#7C2E3D] text-white py-2 px-4 rounded-lg hover:bg-[#5f1f2e] transition">
+              Notify Me
+            </button>
+          </form>
+        </div>
+
+        <!-- App Preview + Badges -->
+        <div class="flex flex-col items-center">
+          <img src="/S-H-StylistAI/frontend/assets/images/app-preview.png" alt="App Preview" class="max-h-96 object-contain mb-6" />
+          <div class="flex space-x-4">
+            <a href="#">
+              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-12">
+            </a>
+            <a href="#">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-12">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#2D2D2D] text-white py-6 text-center">
+    <p>&copy; 2025 H&S StylistAI. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
